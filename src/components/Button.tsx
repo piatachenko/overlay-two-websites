@@ -13,7 +13,7 @@ export default function Button({ children, variant, ...props }: ButtonProps) {
       <button
         className={`rounded-lg px-5 py-2 text-xl border-[1.5px] outline-none transition-all ${
           variant === "primary"
-            ? "bg-[#435cfa] border-[#435cfa] shadow-xl text-slate-100 focus:ring-2"
+            ? "bg-[#435cfa] border-[#435cfa] text-slate-100 focus:ring-2"
             : ""
         } ${
           variant === "outline"
