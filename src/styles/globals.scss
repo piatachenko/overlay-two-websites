@@ -2,27 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-#slider {
-  @apply w-full rounded-full bg-transparent outline-none;
-  -webkit-appearance: none;
-  &::-webkit-slider-runnable-track {
-    background: linear-gradient(
-      to right,
-      #435cfa 0%,
-      #435cfa var(--track-filling),
-      #dfdfdf 0%,
-      #dfdfdf 100%
-    );
-    @apply h-2 rounded-full;
-  }
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    // margin-top = (track height in pixels / 2) - (thumb height in pixels /2)
-    @apply -mt-2 h-6 w-6 cursor-pointer rounded-full border-[5px] border-solid border-white bg-[#435CFA];
-  }
-  &:focus {
-    &::-webkit-slider-thumb {
-      @apply ring;
-    }
-  }
-}
