@@ -16,13 +16,11 @@ const Home: NextPage = () => {
   const router = useRouter();
 
   const urlRegex =
-    /^https?:\/\/(?:(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|localhost:\d{1,5})$/;
+    /^https?:\/\/(?:(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|(?:localhost:\d{1,5}(?:\/|$)))$/;
 
   const areUrlsValid = Object.entries(urls)
     .map(([key, value]) => urlRegex.test(value))
     .every((isValid) => isValid);
-
-  console.log(areUrlsValid)
 
   function handleChange(e: any) {
     const { name, value } = e.target;
