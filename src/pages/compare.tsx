@@ -7,20 +7,12 @@ import DisableInactive from "~/layouts/DisableInactive";
 export default function Compare() {
   const [opacity, setOpacity] = useState(0.5);
   const [isFirstFront, setIsFirstFront] = useState(false);
-  const [url1, setUrl1] = useState("");
-  const [url2, setUrl2] = useState("");
-  const router = useRouter();
 
-  useEffect(() => {
-    if (router.isReady) {
-      if (router.query.url1 && router.query.url2) {
-        setUrl1(router.query.url1.toString());
-        setUrl2(router.query.url2.toString());
-      } else {
-        router.push("/");
-      }
-    }
-  }, [router]);
+  const router = useRouter();
+  const { url1, url2 } = router.query;
+  if (router.isReady && (!url1 || !url2)) {
+    router.push("/");
+  }
 
   function handleSliderChange(e: any) {
     setOpacity(e.target.value);
@@ -43,7 +35,7 @@ export default function Compare() {
                 ? "z-10 bg-[#ff64be] opacity-[--opacity] mix-blend-difference"
                 : ""
             }`}
-            src={url1}
+            src={url1?.toString()}
           ></iframe>
           <iframe
             className={`absolute h-full w-full ${
@@ -51,7 +43,7 @@ export default function Compare() {
                 ? "z-10 bg-[#ff64be] opacity-[--opacity] mix-blend-difference"
                 : ""
             }`}
-            src={url2}
+            src={url2?.toString()}
           ></iframe>
         </div>
         <div className="absolute bottom-10 z-50 w-full max-w-sm px-10">
@@ -69,9 +61,11 @@ export default function Compare() {
           </DisableInactive>
         </div>
         <div className="absolute right-10 top-10 z-50">
-          <Button onClick={handleClick} variant="primary">
-            <span>Click</span>
-          </Button>
+          <DisableInactive>
+            <Button onClick={handleClick} variant="primary">
+              <span>Click</span>
+            </Button>
+          </DisableInactive>
         </div>
       </main>
     </>
