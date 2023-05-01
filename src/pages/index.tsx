@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { type ChangeEvent, useState, FormEvent } from "react";
 import Button from "~/components/Button";
 import TextInput from "~/components/TextInput";
 
@@ -19,10 +19,10 @@ const Home: NextPage = () => {
     /^https?:\/\/(?:(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|(?:localhost:\d{1,5}(?:\/|$)))$/;
 
   const areUrlsValid = Object.entries(urls)
-    .map(([key, value]) => urlRegex.test(value))
+    .map(([_, value]) => urlRegex.test(value))
     .every((isValid) => isValid);
 
-  function handleChange(e: any) {
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
     setUrls((prev) => ({
       ...prev,
@@ -30,7 +30,7 @@ const Home: NextPage = () => {
     }));
   }
 
-  function handleSubmit(e: any) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (url1 && url2) {
       router.push(

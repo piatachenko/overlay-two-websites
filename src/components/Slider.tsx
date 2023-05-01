@@ -5,7 +5,7 @@ interface SliderProps {
   max: number;
   step: number;
   defaultValue: number;
-  onChange?: (event: ChangeEvent) => void;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   style?: CSSProperties;
 }
 

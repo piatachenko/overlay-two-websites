@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { CSSProperties, useEffect, useState } from "react";
+import { useState, type ChangeEvent, type CSSProperties } from "react";
 import Button from "~/components/Button";
 import Slider from "~/components/Slider";
 import DisableInactive from "~/layouts/DisableInactive";
@@ -11,11 +11,11 @@ export default function Compare() {
   const router = useRouter();
   const { url1, url2 } = router.query;
   if (router.isReady && (!url1 || !url2)) {
-    router.push("/");
+    void router.push("/");
   }
 
-  function handleSliderChange(e: any) {
-    setOpacity(e.target.value);
+  function handleSliderChange(e: ChangeEvent<HTMLInputElement>) {
+    setOpacity(parseFloat(e.target.value));
   }
 
   function handleClick() {

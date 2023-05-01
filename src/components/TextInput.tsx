@@ -5,7 +5,7 @@ interface TextInputProps {
   placeholder?: string;
   value?: string;
   name?: string;
-  onChange?: (e: ChangeEvent) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function TextInput({ icon, ...props }: TextInputProps) {
