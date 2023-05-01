@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { type ChangeEvent, useState, FormEvent } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import Button from "~/components/Button";
 import TextInput from "~/components/TextInput";
 
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (url1 && url2) {
-      router.push(
+      void router.push(
         `/compare?url1=${encodeURIComponent(url1)}&url2=${encodeURIComponent(
           url2
         )}`
