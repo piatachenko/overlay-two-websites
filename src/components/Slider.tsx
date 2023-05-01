@@ -1,11 +1,11 @@
-import { CSSProperties } from "react";
+import type { ChangeEvent, CSSProperties } from "react";
 
 interface SliderProps {
   min: number;
   max: number;
   step: number;
   defaultValue: number;
-  onChange?: (event: any) => void;
+  onChange?: (event: ChangeEvent) => void;
   style?: CSSProperties;
 }
 
